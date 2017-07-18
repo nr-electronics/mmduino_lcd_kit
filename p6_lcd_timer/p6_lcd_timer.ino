@@ -3,7 +3,9 @@
 //                RS EN D4 D5 D6 D7
 LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 
-const int switchPin = A2;
+const int switchPin1 = A0;
+const int switchPin2 = A2;
+
 const int buzzerPin = 11;
 
 const int SET_MODE = 1;
@@ -21,7 +23,8 @@ long lastUpdateTime = 0;
 void setup() {
   lcd.begin(16, 2);
   lcd.print("My Egg Timer");
-  pinMode(switchPin, INPUT_PULLUP);
+  pinMode(switchPin1, INPUT_PULLUP);
+  pinMode(switchPin2, OUTPUT); // LOW
 }
 
 void loop() {
@@ -51,7 +54,7 @@ void displayTime() {
 }
 
 void handleSetMode() {
-  int switchPress = checkSwitch(switchPin);
+  int switchPress = checkSwitch(switchPin1);
   if (switchPress == LONG_PRESS) {
     mode = RUN_MODE;
     return;
@@ -65,7 +68,7 @@ void handleSetMode() {
 }
 
 void handleRunMode() {
-  if (checkSwitch(switchPin) == SHORT_PRESS) {
+  if (checkSwitch(switchPin1) == SHORT_PRESS) {
     mode = SET_MODE;
     return;
   }
@@ -90,7 +93,7 @@ void updateTime() {
 }
 
 void handleAlarmMode() {
-  if (checkSwitch(switchPin) == SHORT_PRESS) {
+  if (checkSwitch(switchPin1) == SHORT_PRESS) {
     mode = SET_MODE;
     noTone(buzzerPin);
     mins = 4;

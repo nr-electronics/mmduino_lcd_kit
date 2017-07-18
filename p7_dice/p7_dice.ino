@@ -22,7 +22,7 @@ void setup() {
     Serial.println(i);
     pinMode(ledPins[i], OUTPUT);
   }
-  randomSeed(analogRead(0));
+  randomSeed(analogRead(A0));
 }
 
 void loop() {
