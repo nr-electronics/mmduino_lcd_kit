@@ -3,8 +3,8 @@
 //                RS EN D4 D5 D6 D7
 LiquidCrystal lcd(3, 4, 5, 6, 7, 8);
 
-const int switchPin1 = A0;
-const int switchPin2 = A2;
+const int switchPin1 = A2;
+const int switchPin2 = A0;
 
 const int buzzerPin = 11;
 
