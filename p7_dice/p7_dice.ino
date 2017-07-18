@@ -19,7 +19,6 @@ const int switchPin = A2;
 void setup() {
   pinMode(switchPin, INPUT_PULLUP);
   for (int i = 0; i < 7; i++) {
-    Serial.println(i);
     pinMode(ledPins[i], OUTPUT);
   }
   randomSeed(analogRead(A0));
